@@ -10,12 +10,19 @@ class BusinessClassHotelRoom : public HotelRoomInterface {
 public:
     BusinessClassHotelRoom(const QString &number, int seats, bool available, const QVector<Equipment*> &equipments)
             : HotelRoomInterface(number, seats, available), equipments(equipments) {}
-    int getCost() override {
-        return 0;
+
+    float getCost() override {
+        float cost = BUSINESS_COST;
+        for (auto eq: equipments)
+            cost += BUSINESS_COEF * eq->getCost();
+        return cost;
     }
 
-    QVector<Equipment*> getEquipments() override {
-        return QVector<Equipment*>();
+    QString getEquipments() override {
+        QString info;
+        for (auto eq : equipments)
+            info += eq->getInfo() + "\n";
+        return info.remove(info.size() - 1, info.size());
     }
 };
 #endif //HOTEL_BUSINESSCLASSHOTELROOM_H
