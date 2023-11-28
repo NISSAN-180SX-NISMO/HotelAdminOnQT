@@ -7,8 +7,13 @@
 #include "DataBaseAdapter.h"
 
 class ClientDataBase : public DataBaseAdapter<Booking> {
-private:
-    QVector<Booking> bookings;
+protected:
+    QVector<Booking> bookings;;
+    friend class DataBase;
+    ClientDataBase():DataBaseAdapter<Booking>(){
+        loadFromJSON();
+    }
+
 public:
     void push(Booking booking) override {
 
@@ -25,5 +30,11 @@ public:
     void loadFromJSON() override {
 
     }
+
+    QVector<Booking> getAll() override {
+        return QVector<Booking>();
+    }
 };
+
+
 #endif //HOTEL_CLIENTDATABASE_H

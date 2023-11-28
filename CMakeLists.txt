@@ -29,7 +29,18 @@ add_executable(Hotel main.cpp
         DataBases/DataBaseAdapter.h
         DataBases/ClientDataBase.h
         DataBases/HotelRoomDataBase.h
-        Entities/BookingBuilder.h)
+        Entities/BookingBuilder.h
+        MainTabWindow/maintabwindow.cpp
+        MainTabWindow/maintabwindow.h
+        MainTabWindow/maintabwindow.ui
+        HotelRoomListWidget/hotelroomlistwidget.cpp
+        HotelRoomListWidget/hotelroomlistwidget.h
+        HotelRoomListWidget/hotelroomlistwidget.ui
+        ClientsListWidget/clientslistwidget.cpp
+        ClientsListWidget/clientslistwidget.h
+        ClientsListWidget/clientslistwidget.ui
+        DataBases/DataBase.h
+)
 target_link_libraries(Hotel
         Qt::Core
         Qt::Gui

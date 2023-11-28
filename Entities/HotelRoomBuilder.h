@@ -37,11 +37,11 @@ public:
             return sum;
         }(this->equipments);
         if (equipmentsCost <= 5000)
-            return new RegularHotelRoom(number, seats, true, equipments);
+            return new RegularHotelRoom("RG" + number, seats, true, equipments);
         else if (equipmentsCost <= 9000)
-            return new BusinessClassHotelRoom(number, seats, true, equipments);
+            return new BusinessClassHotelRoom("BC" + number, seats, true, equipments);
         else {
-            return new LuxuryHotelRoom(number, seats, true, equipments);
+            return new LuxuryHotelRoom("LX" + number, seats, true, equipments);
         }
     }
 

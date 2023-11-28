@@ -29,7 +29,7 @@ namespace Equipments {
     public:
         int getCost() override {  return TV_COST; }
         QString getInfo() override {
-            return "Телевизор";
+            return "РўРµР»РµРІРёР·РѕСЂ";
         }
     };
 
@@ -37,7 +37,7 @@ namespace Equipments {
     public:
         int getCost() override {  return TABLE_COST; }
         QString getInfo() override {
-            return "Стол рабочий";
+            return "РЎС‚РѕР» РїРёСЃСЊРјРµРЅРЅС‹Р№";
         }
     };
 
@@ -45,7 +45,7 @@ namespace Equipments {
     public:
         int getCost() override {  return BED_COST; }
         QString getInfo() override {
-            return "Кровать";
+            return "РљСЂРѕРІР°С‚СЊ";
         }
     };
 
@@ -53,7 +53,7 @@ namespace Equipments {
     public:
         int getCost() override {  return BATHROOM_COST; }
         QString getInfo() override {
-            return "Душевая комната";
+            return "Р’Р°РЅРЅР°СЏ РєРѕРјРЅР°С‚Р°";
         }
     };
 
@@ -69,7 +69,7 @@ namespace Equipments {
     public:
         int getCost() override {  return ARMCHAIR_COST; }
         QString getInfo() override {
-            return "Кресло";
+            return "РљСЂРµСЃР»Рѕ";
         }
     };
 
@@ -77,7 +77,7 @@ namespace Equipments {
     public:
         int getCost() override {  return DRESSING_ROOM_COST; }
         QString getInfo() override {
-            return "Гардеробная комната";
+            return "Р“Р°СЂРґРµСЂРѕР±РЅР°СЏ РєРѕРјРЅР°С‚Р°";
         }
     };
 
