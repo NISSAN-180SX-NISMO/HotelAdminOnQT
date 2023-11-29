@@ -13,16 +13,6 @@
   <property name="windowTitle">
    <string>ClientsListWidget</string>
   </property>
-  <widget class="QTableView" name="tableView">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>1801</width>
-     <height>931</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -60,6 +50,16 @@
    </property>
    <property name="text">
     <string>Удалить бронь</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>1801</width>
+     <height>931</height>
+    </rect>
    </property>
   </widget>
  </widget>

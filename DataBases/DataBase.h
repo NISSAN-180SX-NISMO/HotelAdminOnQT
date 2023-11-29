@@ -1,7 +1,4 @@
-//
-// Created by user on 28.11.2023.
-//
-
+#pragma once
 #ifndef HOTEL_DATABASE_H
 #define HOTEL_DATABASE_H
 

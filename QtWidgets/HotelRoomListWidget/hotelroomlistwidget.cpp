@@ -11,6 +11,7 @@
 HotelRoomListWidget::HotelRoomListWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::HotelRoomListWidget) {
     ui->setupUi(this);
+
     ui->tableWidget->setColumnCount(5);
     ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "Номер" << "Количество мест" << "Номер свободен" <<  "Стоимость" << " О номере");
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView(Qt::Orientation()).Stretch);

@@ -6,8 +6,8 @@
 #define HOTEL_HOTELROOMLISTWIDGET_H
 
 #include <QWidget>
-#include "../DataBases/HotelRoomDataBase.h"
-#include "../DataBases/DataBase.h"
+#include "../../DataBases/HotelRoomDataBase.h"
+#include "../../DataBases/DataBase.h"
 
 
 QT_BEGIN_NAMESPACE

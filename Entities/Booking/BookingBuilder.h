@@ -2,11 +2,11 @@
 #ifndef HOTEL_BOOKINGBUILDER_H
 #define HOTEL_BOOKINGBUILDER_H
 
-#include "Client/Client.h"
-#include "HotelRoom/HotelRoomInterface.h"
+#include "Models/Client.h"
+#include "../HotelRoom/Models/HotelRoomInterface.h"
 #include "QVector"
 #include "QDateTime"
-#include "Booking.h"
+#include "Models/Booking.h"
 
 class BookingBuilder {
 private:
@@ -35,8 +35,8 @@ public:
         return this;
     }
 
-    Booking getBooking(){
-        return Booking(clients, room, bookingDate, endBookingDate);
+    Booking* getBooking(){
+        return new Booking(clients, room, bookingDate, endBookingDate);
     }
 };
 #endif //HOTEL_BOOKINGBUILDER_H

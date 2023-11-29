@@ -12,8 +12,6 @@ protected:
 public:
     virtual void push(value) = 0;
     virtual void remove(int ID) = 0;
-    virtual void saveToJSON() = 0;
-    virtual void loadFromJSON() = 0;
     virtual QVector<value> getAll() = 0;
 };
 #endif //HOTEL_DATABASEADAPTER_H

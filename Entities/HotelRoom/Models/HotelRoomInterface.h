@@ -4,7 +4,9 @@
 
 
 #include <QString>
-#include "../Equipment/Equipment.h"
+#include <QList>
+#include "../../Equipment/Equipment.h"
+#include "../../../json.hpp"
 
 #define REGULAR_COEF 1.2
 #define REGULAR_COST 9000
@@ -19,8 +21,16 @@ private:
     QString number;
     int seats;
     bool available;
+protected:
+    QVector<Equipment*> equipments;
 public:
-    HotelRoomInterface(const QString &number, int seats, bool available) : number(number + QString::number(ID)), seats(seats), available(available) { ++ID; }
+    HotelRoomInterface(const QString &number, int seats, bool available, QVector<Equipment*> equipments)
+    :
+    number(number + "-" + QString::number(ID)),
+    seats(seats), available(available),
+    equipments(equipments)
+    { ++ID; }
+
     const QString &getNumber() const {
         return number;
     }
@@ -43,6 +53,21 @@ public:
         return this->ID;
     }
 
+    nlohmann::json toJSON() const {
+        nlohmann::json data;
+        data["number"] = getNumber().toStdString();
+        data["seats"] = getSeats();
+        data["available"] = isAvailable();
+        nlohmann::json eq_json;
+        for (const auto& equipment : equipments) {
+            eq_json.push_back(equipment->toJSON());
+        }
+        data["equipments"] = eq_json;
+        return data;
+    }
+    static HotelRoomInterface* roomFromJSON(nlohmann::json room_data);
+
+    virtual HotelRoomInterface* copy() = 0;
     virtual float getCost() = 0;
     virtual QString getEquipments() = 0;
 };
