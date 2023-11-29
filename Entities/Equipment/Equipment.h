@@ -4,7 +4,7 @@
 
 
 #include <QString>
-#include "../../json.hpp"
+#include "json.hpp"
 
 #define TV_COST 1500;
 #define TABLE_COST 1000;

@@ -8,6 +8,7 @@
 #include "QDateTime"
 #include "Models/Booking.h"
 
+
 class BookingBuilder {
 private:
     QVector<Client*> clients;

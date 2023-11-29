@@ -1,7 +1,3 @@
-//
-// Created by user on 28.11.2023.
-//
-
 #include "Equipment.h"
 int Equipment::ID = 0;
 
@@ -13,4 +9,5 @@ Equipment* Equipment::fromJSON(const nlohmann::json &data) {
     else if (data["type"] == "DressingRoom") return new Equipments::DressingRoom();
     else if (data["type"] == "Armchair") return new Equipments::Armchair();
     else if (data["type"] == "Bathroom") return new Equipments::Bathroom();
+    else return nullptr;
 }

@@ -7,6 +7,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(CMAKE_PREFIX_PATH "C:/Qt/6.4.2/mingw_64/lib/cmake")
+include_directories(include)
+
 
 find_package(Qt6 COMPONENTS
         Core
@@ -40,7 +42,7 @@ add_executable(Hotel main.cpp
         QtWidgets/ClientsListWidget/clientslistwidget.h
         QtWidgets/ClientsListWidget/clientslistwidget.ui
         DataBases/DataBase.h
-        json.hpp
+        include/json.hpp
         Entities/HotelRoom/HotelRoomJSONParser.h
         Entities/HotelRoom/HotelRoomJSONParser.cpp
         Entities/Booking/BookingJSONParser.cpp
@@ -50,6 +52,7 @@ add_executable(Hotel main.cpp
         QtWidgets/appendhotelroomdialog.h
         QtWidgets/appendhotelroomdialog.ui
 )
+target_include_directories(Hotel PUBLIC include)
 target_link_libraries(Hotel
         Qt::Core
         Qt::Gui

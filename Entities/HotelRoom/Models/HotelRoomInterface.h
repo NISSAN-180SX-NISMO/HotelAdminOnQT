@@ -6,7 +6,7 @@
 #include <QString>
 #include <QList>
 #include "../../Equipment/Equipment.h"
-#include "../../../json.hpp"
+#include "json.hpp"
 
 #define REGULAR_COEF 1.2
 #define REGULAR_COST 9000

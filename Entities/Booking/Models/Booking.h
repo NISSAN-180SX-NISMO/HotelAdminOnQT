@@ -5,6 +5,7 @@
 
 #include <QDateTime>
 #include "Client.h"
+#include "json.hpp"
 #include "../../HotelRoom/Models/HotelRoomInterface.h"
 #include "QVector"
 

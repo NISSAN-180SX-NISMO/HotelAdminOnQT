@@ -1,4 +1,3 @@
-#pragma once
 #include "BookingJSONParser.h"
 
 QVector<Booking *> BookingJSONParser::loadFromJSON(QString filename) {

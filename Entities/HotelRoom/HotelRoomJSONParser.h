@@ -5,7 +5,7 @@
 #include <QVector>
 #include "Models/HotelRoomInterface.h"
 #include "HotelRoomBuilder.h"
-#include "../../../json.hpp"
+#include "json.hpp"
 #include "fstream"
 
 class HotelRoomJSONParser {
