@@ -6,7 +6,7 @@
 #define HOTEL_CLIENTSLISTWIDGET_H
 
 #include <QWidget>
-#include "../DataBases/DataBase.h"
+#include "../../DataBases/DataBase.h"
 
 
 QT_BEGIN_NAMESPACE

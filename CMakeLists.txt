@@ -30,15 +30,15 @@ add_executable(Hotel main.cpp
         DataBases/ClientDataBase.h
         DataBases/HotelRoomDataBase.h
         Entities/Booking/BookingBuilder.h
-        MainTabWindow/maintabwindow.cpp
-        MainTabWindow/maintabwindow.h
-        MainTabWindow/maintabwindow.ui
-        HotelRoomListWidget/hotelroomlistwidget.cpp
-        HotelRoomListWidget/hotelroomlistwidget.h
-        HotelRoomListWidget/hotelroomlistwidget.ui
-        ClientsListWidget/clientslistwidget.cpp
-        ClientsListWidget/clientslistwidget.h
-        ClientsListWidget/clientslistwidget.ui
+        QtWidgets/MainTabWindow/maintabwindow.cpp
+        QtWidgets/MainTabWindow/maintabwindow.h
+        QtWidgets/MainTabWindow/maintabwindow.ui
+        QtWidgets/HotelRoomListWidget/hotelroomlistwidget.cpp
+        QtWidgets/HotelRoomListWidget/hotelroomlistwidget.h
+        QtWidgets/HotelRoomListWidget/hotelroomlistwidget.ui
+        QtWidgets/ClientsListWidget/clientslistwidget.cpp
+        QtWidgets/ClientsListWidget/clientslistwidget.h
+        QtWidgets/ClientsListWidget/clientslistwidget.ui
         DataBases/DataBase.h
         json.hpp
         Entities/HotelRoom/HotelRoomJSONParser.h
@@ -46,6 +46,9 @@ add_executable(Hotel main.cpp
         Entities/Booking/BookingJSONParser.cpp
         Entities/Booking/BookingJSONParser.h
         Entities/Booking/Models/Booking.cpp
+        QtWidgets/appendhotelroomdialog.cpp
+        QtWidgets/appendhotelroomdialog.h
+        QtWidgets/appendhotelroomdialog.ui
 )
 target_link_libraries(Hotel
         Qt::Core
