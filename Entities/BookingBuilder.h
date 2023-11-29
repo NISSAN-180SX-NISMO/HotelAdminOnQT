@@ -3,7 +3,7 @@
 #define HOTEL_BOOKINGBUILDER_H
 
 #include "Client/Client.h"
-#include "HotelRoom/HotelRoomInterface.h"
+#include "HotelRoom/Models/HotelRoomInterface.h"
 #include "QVector"
 #include "QDateTime"
 #include "Booking.h"

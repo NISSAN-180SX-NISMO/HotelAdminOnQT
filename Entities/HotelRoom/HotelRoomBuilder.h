@@ -2,16 +2,16 @@
 #ifndef HOTEL_HOTELROOMBUILDER_H
 #define HOTEL_HOTELROOMBUILDER_H
 
-#include "HotelRoom/HotelRoomInterface.h"
-#include "HotelRoom/RegularHotelRoom.h"
-#include "HotelRoom/BusinessClassHotelRoom.h"
-#include "HotelRoom/LuxuryHotelRoom.h"
+#include "Models/HotelRoomInterface.h"
+#include "Models/RegularHotelRoom.h"
+#include "Models/BusinessClassHotelRoom.h"
+#include "Models/LuxuryHotelRoom.h"
 
 class HotelRoomBuilder {
 private:
     QString number;
     int seats = 0;
-    bool available = false;
+    bool available = true;
     QVector<Equipment*> equipments;
 public:
     HotelRoomBuilder* setNumber(QString number){
@@ -21,6 +21,11 @@ public:
 
     HotelRoomBuilder* setSeats(int seats){
         this->seats = seats;
+        return this;
+    }
+
+    HotelRoomBuilder* setAvailable(bool available){
+        this->available = available;
         return this;
     }
 
@@ -37,11 +42,11 @@ public:
             return sum;
         }(this->equipments);
         if (equipmentsCost <= 5000)
-            return new RegularHotelRoom("RG" + number, seats, true, equipments);
+            return new RegularHotelRoom((number[0] != 'R' ? "RG" : "") + number, seats, available, equipments);
         else if (equipmentsCost <= 9000)
-            return new BusinessClassHotelRoom("BC" + number, seats, true, equipments);
+            return new BusinessClassHotelRoom((number[0] != 'B' ? "BC" : "") + number, seats, available, equipments);
         else {
-            return new LuxuryHotelRoom("LX" + number, seats, true, equipments);
+            return new LuxuryHotelRoom((number[0] != 'L' ? "LX" : "") + number, seats, available, equipments);
         }
     }
 

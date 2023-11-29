@@ -6,11 +6,9 @@
 #include "HotelRoomInterface.h"
 
 class RegularHotelRoom : public HotelRoomInterface {
-private:
-    QVector<Equipment*> equipments;
 public:
     RegularHotelRoom(const QString &number, int seats, bool available, const QVector<Equipment*> &equipments)
-            : HotelRoomInterface(number, seats, available), equipments(equipments) {}
+            : HotelRoomInterface(number, seats, available, equipments) {}
 
     float getCost() override {
         float cost = REGULAR_COST;

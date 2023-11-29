@@ -4,6 +4,7 @@
 
 
 #include <QString>
+#include "../../json.hpp"
 
 #define TV_COST 1500;
 #define TABLE_COST 1000;
@@ -17,15 +18,24 @@
 class Equipment {
 private:
     static int ID;
+    virtual QString getType() const = 0;
 public:
     Equipment() {  ++ID; }
     virtual int getCost() = 0;
     virtual QString getInfo() = 0;
-
+    nlohmann::json toJSON() const {
+        nlohmann::json data;
+        // Добавьте соответствующие поля в JSON
+        data["type"] = getType().toStdString();
+        return data;
+    }
+    static Equipment* fromJSON(const nlohmann::json& data);
 };
 
 namespace Equipments {
     class TV : public Equipment {
+    private:
+        QString getType() const override { return "TV"; }
     public:
         int getCost() override {  return TV_COST; }
         QString getInfo() override {
@@ -34,6 +44,8 @@ namespace Equipments {
     };
 
     class Table : public Equipment {
+    private:
+        QString getType() const override { return "Table"; }
     public:
         int getCost() override {  return TABLE_COST; }
         QString getInfo() override {
@@ -42,6 +54,8 @@ namespace Equipments {
     };
 
     class Bed : public Equipment {
+    private:
+        QString getType() const override { return "Bed"; }
     public:
         int getCost() override {  return BED_COST; }
         QString getInfo() override {
@@ -50,6 +64,8 @@ namespace Equipments {
     };
 
     class Bathroom : public Equipment {
+    private:
+        QString getType() const override { return "Bathroom"; }
     public:
         int getCost() override {  return BATHROOM_COST; }
         QString getInfo() override {
@@ -58,6 +74,8 @@ namespace Equipments {
     };
 
     class WIFI : public Equipment {
+    private:
+        QString getType() const override { return "WIFI"; }
     public:
         int getCost() override {  return WIFI_COST; }
         QString getInfo() override {
@@ -66,6 +84,8 @@ namespace Equipments {
     };
 
     class Armchair : public Equipment {
+    private:
+        QString getType() const override { return "Armchair"; }
     public:
         int getCost() override {  return ARMCHAIR_COST; }
         QString getInfo() override {
@@ -74,6 +94,8 @@ namespace Equipments {
     };
 
     class DressingRoom : public Equipment {
+    private:
+        QString getType() const override { return "DressingRoom"; }
     public:
         int getCost() override {  return DRESSING_ROOM_COST; }
         QString getInfo() override {
@@ -83,6 +105,7 @@ namespace Equipments {
 
 
 }
+
 
 
 #endif //HOTEL_EQUIPMENT_H

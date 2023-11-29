@@ -15,14 +15,14 @@ find_package(Qt6 COMPONENTS
         REQUIRED)
 
 add_executable(Hotel main.cpp
-        Entities/HotelRoom/HotelRoomInterface.cpp
-        Entities/HotelRoom/HotelRoomInterface.h
+        Entities/HotelRoom/Models/HotelRoomInterface.cpp
+        Entities/HotelRoom/Models/HotelRoomInterface.h
         Entities/Equipment/Equipment.cpp
         Entities/Equipment/Equipment.h
-        Entities/HotelRoom/RegularHotelRoom.h
-        Entities/HotelRoom/BusinessClassHotelRoom.h
-        Entities/HotelRoom/LuxuryHotelRoom.h
-        Entities/HotelRoomBuilder.h
+        Entities/HotelRoom/Models/RegularHotelRoom.h
+        Entities/HotelRoom/Models/BusinessClassHotelRoom.h
+        Entities/HotelRoom/Models/LuxuryHotelRoom.h
+        Entities/HotelRoom/HotelRoomBuilder.h
         Entities/Client/Client.cpp
         Entities/Client/Client.h
         Entities/Booking.h
@@ -40,6 +40,9 @@ add_executable(Hotel main.cpp
         ClientsListWidget/clientslistwidget.h
         ClientsListWidget/clientslistwidget.ui
         DataBases/DataBase.h
+        json.hpp
+        Entities/HotelRoom/HotelRoomJSONParser.h
+        Entities/HotelRoom/HotelRoomJSONParser.cpp
 )
 target_link_libraries(Hotel
         Qt::Core

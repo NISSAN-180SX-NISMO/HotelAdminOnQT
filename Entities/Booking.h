@@ -5,7 +5,7 @@
 
 #include <QDateTime>
 #include "Client/Client.h"
-#include "HotelRoom/HotelRoomInterface.h"
+#include "HotelRoom/Models/HotelRoomInterface.h"
 #include "QVector"
 
 class Booking {
