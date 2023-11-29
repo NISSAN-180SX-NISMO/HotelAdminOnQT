@@ -4,19 +4,26 @@
 
 
 #include <QString>
+#include "../../../json.hpp"
 
 class Client {
 private:
     static int ID;
     QString name;
 public:
-    explicit Client(const QString &name) : name(name) { ++ID; }
+    Client(QString name) : name(name) { ++ID; }
     static int getId() {
         return ID;
     }
     const QString &getName() const {
         return name;
     }
+    nlohmann::json toJSON() const {
+        nlohmann::json data;
+        data["name"] = getName().toStdString();
+        return data;
+    }
+    static Client* clientFromJSON(nlohmann::json client_data);
 };
 
 

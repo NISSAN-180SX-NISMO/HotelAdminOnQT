@@ -11,7 +11,7 @@
 class HotelRoomJSONParser {
 private:
     QVector<HotelRoomInterface*> rooms;
-    static HotelRoomInterface* roomFromJSON(nlohmann::json room_data);
+
 public:
     HotelRoomJSONParser(QVector<HotelRoomInterface*> rooms) {
         this->rooms = rooms;

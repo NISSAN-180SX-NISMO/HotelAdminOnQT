@@ -56,13 +56,6 @@ public:
                 rooms.erase(rooms.begin() + i);
     }
 
-    void saveToJSON() override {
-        // TODO
-    }
-
-    void loadFromJSON() override {
-        // TODO
-    }
 
     QVector<HotelRoomInterface *> getAll() override {
         return rooms;

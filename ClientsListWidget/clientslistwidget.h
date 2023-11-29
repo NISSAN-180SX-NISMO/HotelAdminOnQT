@@ -6,6 +6,7 @@
 #define HOTEL_CLIENTSLISTWIDGET_H
 
 #include <QWidget>
+#include "../DataBases/DataBase.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +23,7 @@ public:
 
 private:
     Ui::ClientsListWidget *ui;
+    ClientDataBase* clients = DataBase().getClients();
 };
 
 

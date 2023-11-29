@@ -23,13 +23,13 @@ add_executable(Hotel main.cpp
         Entities/HotelRoom/Models/BusinessClassHotelRoom.h
         Entities/HotelRoom/Models/LuxuryHotelRoom.h
         Entities/HotelRoom/HotelRoomBuilder.h
-        Entities/Client/Client.cpp
-        Entities/Client/Client.h
-        Entities/Booking.h
+        Entities/Booking/Models/Client.cpp
+        Entities/Booking/Models/Client.h
+        Entities/Booking/Models/Booking.h
         DataBases/DataBaseAdapter.h
         DataBases/ClientDataBase.h
         DataBases/HotelRoomDataBase.h
-        Entities/BookingBuilder.h
+        Entities/Booking/BookingBuilder.h
         MainTabWindow/maintabwindow.cpp
         MainTabWindow/maintabwindow.h
         MainTabWindow/maintabwindow.ui
@@ -43,6 +43,9 @@ add_executable(Hotel main.cpp
         json.hpp
         Entities/HotelRoom/HotelRoomJSONParser.h
         Entities/HotelRoom/HotelRoomJSONParser.cpp
+        Entities/Booking/BookingJSONParser.cpp
+        Entities/Booking/BookingJSONParser.h
+        Entities/Booking/Models/Booking.cpp
 )
 target_link_libraries(Hotel
         Qt::Core

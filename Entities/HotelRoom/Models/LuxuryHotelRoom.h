@@ -10,6 +10,10 @@ public:
     LuxuryHotelRoom(const QString &number, int seats, bool available, const QVector<Equipment*> &equipments)
             : HotelRoomInterface(number, seats, available, equipments) {}
 
+    HotelRoomInterface *copy() override {
+        return new LuxuryHotelRoom(this->getNumber(), this->getSeats(), this->isAvailable(), this->equipments);
+    }
+
     float getCost() override {
         float cost = LUXURY_COST;
         for (auto eq: equipments)

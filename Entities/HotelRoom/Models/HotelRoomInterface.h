@@ -53,8 +53,6 @@ public:
         return this->ID;
     }
 
-    virtual float getCost() = 0;
-    virtual QString getEquipments() = 0;
     nlohmann::json toJSON() const {
         nlohmann::json data;
         data["number"] = getNumber().toStdString();
@@ -67,6 +65,11 @@ public:
         data["equipments"] = eq_json;
         return data;
     }
+    static HotelRoomInterface* roomFromJSON(nlohmann::json room_data);
+
+    virtual HotelRoomInterface* copy() = 0;
+    virtual float getCost() = 0;
+    virtual QString getEquipments() = 0;
 };
 
 
