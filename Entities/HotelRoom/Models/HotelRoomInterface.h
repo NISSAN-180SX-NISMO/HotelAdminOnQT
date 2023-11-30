@@ -7,6 +7,7 @@
 #include <QList>
 #include "../../Equipment/Equipment.h"
 #include "json.hpp"
+#include <regex>
 
 #define REGULAR_COEF 1.2
 #define REGULAR_COST 9000
@@ -55,7 +56,12 @@ public:
 
     nlohmann::json toJSON() const {
         nlohmann::json data;
-        data["number"] = getNumber().toStdString();
+        std::string number = getNumber().toStdString();
+        std::regex regex_pattern("\\d{3}");
+        std::sregex_iterator iter(number.begin(), number.end(), regex_pattern);
+        std::smatch match = *iter;
+
+        data["number"] = match.str();
         data["seats"] = getSeats();
         data["available"] = isAvailable();
         nlohmann::json eq_json;

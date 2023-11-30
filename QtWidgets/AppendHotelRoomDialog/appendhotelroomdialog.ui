@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AppendHotelRoomDialog</class>
+ <widget class="QDialog" name="AppendHotelRoomDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>281</width>
+    <height>409</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AppendHotelRoomDialog</string>
+  </property>
+  <widget class="QPushButton" name="createRoom_pushButton">
+   <property name="geometry">
+    <rect>
+     <x>73</x>
+     <y>368</y>
+     <width>130</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Добавить комнату</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>120</y>
+     <width>241</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Текущий список комплектации:</string>
+   </property>
+   <widget class="QListView" name="equipments_listView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>22</y>
+      <width>220</width>
+      <height>198</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>241</width>
+     <height>86</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Введите трёхзначный номер:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="number_lineEdit"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Выберите количество мест: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="seatsCount_spinBox"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QComboBox" name="equipments_comboBox"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="appendEquipment_pushButton">
+        <property name="text">
+         <string>Добавить</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

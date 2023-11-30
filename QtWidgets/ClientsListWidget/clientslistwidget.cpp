@@ -18,7 +18,6 @@ ClientsListWidget::ClientsListWidget(QWidget *parent) :
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView(Qt::Orientation()).Stretch);
     ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView(Qt::Orientation()).ResizeToContents);
     int eps = 0;
-    std::cout  << clients->getAll().size();
     for (int j = 0; j < clients->getAll().size(); ++j)
         for (int i = 0; i < clients->getAll()[j]->getClients().size(); ++i, ++eps) {
             ui->tableWidget->insertRow(j + eps);

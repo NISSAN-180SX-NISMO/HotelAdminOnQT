@@ -23,7 +23,7 @@ public:
 
 private:
     Ui::ClientsListWidget *ui;
-    ClientDataBase* clients = DataBase().getClients();
+    ClientDataBase* clients = DataBase::getClients();
 };
 
 

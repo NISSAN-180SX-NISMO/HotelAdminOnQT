@@ -48,9 +48,10 @@ add_executable(Hotel main.cpp
         Entities/Booking/BookingJSONParser.cpp
         Entities/Booking/BookingJSONParser.h
         Entities/Booking/Models/Booking.cpp
-        QtWidgets/appendhotelroomdialog.cpp
-        QtWidgets/appendhotelroomdialog.h
-        QtWidgets/appendhotelroomdialog.ui
+        QtWidgets/AppendHotelRoomDialog/appendhotelroomdialog.cpp
+        QtWidgets/AppendHotelRoomDialog/appendhotelroomdialog.h
+        QtWidgets/AppendHotelRoomDialog/appendhotelroomdialog.ui
+        DataBases/DataBase.cpp
 )
 target_include_directories(Hotel PUBLIC include)
 target_link_libraries(Hotel

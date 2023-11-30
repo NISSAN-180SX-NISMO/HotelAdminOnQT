@@ -15,39 +15,40 @@ protected:
     QVector<HotelRoomInterface*> rooms;
     friend class DataBase;
     HotelRoomDataBase():DataBaseAdapter<HotelRoomInterface *>(){
-        this->push(HotelRoomBuilder().
-                setNumber("111")->
-                setSeats(2)->
-                appendEquipment(new Equipments::TV)->
-                appendEquipment(new Equipments::Bed)->
-                getHotelRoom());
-
-        this->push(HotelRoomBuilder().
-                setNumber("222")->
-                setSeats(2)->
-                appendEquipment(new Equipments::TV)->
-                appendEquipment(new Equipments::Bed)->
-                appendEquipment(new Equipments::WIFI)->
-                appendEquipment(new Equipments::Table)->
-                getHotelRoom());
-
-        this->push(HotelRoomBuilder().
-                setNumber("333")->
-                setSeats(2)->
-                appendEquipment(new Equipments::TV)->
-                appendEquipment(new Equipments::Bed)->
-                appendEquipment(new Equipments::WIFI)->
-                appendEquipment(new Equipments::Table)->
-                appendEquipment(new Equipments::DressingRoom)->
-                getHotelRoom());
-
-        HotelRoomJSONParser parser(this->rooms);
-        parser.saveToJSON("rooms.json");
-        //this->rooms = HotelRoomJSONParser::loadFromJSON("rooms.json");
+//        this->push(HotelRoomBuilder().
+//                setNumber("111")->
+//                setSeats(2)->
+//                appendEquipment(new Equipments::TV)->
+//                appendEquipment(new Equipments::Bed)->
+//                getHotelRoom());
+//
+//        this->push(HotelRoomBuilder().
+//                setNumber("222")->
+//                setSeats(2)->
+//                appendEquipment(new Equipments::TV)->
+//                appendEquipment(new Equipments::Bed)->
+//                appendEquipment(new Equipments::WIFI)->
+//                appendEquipment(new Equipments::Table)->
+//                getHotelRoom());
+//
+//        this->push(HotelRoomBuilder().
+//                setNumber("333")->
+//                setSeats(2)->
+//                appendEquipment(new Equipments::TV)->
+//                appendEquipment(new Equipments::Bed)->
+//                appendEquipment(new Equipments::WIFI)->
+//                appendEquipment(new Equipments::Table)->
+//                appendEquipment(new Equipments::DressingRoom)->
+//                getHotelRoom());
+//        HotelRoomJSONParser parser(this->rooms);
+//        parser.saveToJSON("rooms.json");
+        this->rooms = HotelRoomJSONParser::loadFromJSON("rooms.json");
     };
 public:
     void push(HotelRoomInterface *room) override {
         rooms.push_back(room);
+        HotelRoomJSONParser parser(this->rooms);
+        parser.saveToJSON("rooms.json");
     }
 
     void remove(int ID) override {
@@ -59,6 +60,13 @@ public:
 
     QVector<HotelRoomInterface *> getAll() override {
         return rooms;
+    }
+
+    bool contains(const QString &number) override {
+        for(auto room : rooms)
+            if (room->getNumber() == number)
+                return true;
+        return false;
     }
 };
 #endif //HOTEL_HOTELROOMDATABASE_H

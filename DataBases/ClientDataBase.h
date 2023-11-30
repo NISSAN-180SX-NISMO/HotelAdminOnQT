@@ -48,6 +48,14 @@ public:
     QVector<Booking*> getAll() override {
         return this->bookings;
     }
+
+    bool contains(const QString &name) override {
+        for(auto booking : bookings)
+            for (auto client : booking->getClients())
+                if (client->getName() == name)
+                    return true;
+        return false;
+    }
 };
 
 

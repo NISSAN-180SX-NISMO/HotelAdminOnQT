@@ -8,14 +8,36 @@
 #include "ui_HotelRoomListWidget.h"
 
 
+
 HotelRoomListWidget::HotelRoomListWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::HotelRoomListWidget) {
     ui->setupUi(this);
+
+    updateRooms();
+    ui->lineEdit->setPlaceholderText("Введите номер");
+    ui->removeRoom_pushButton->setEnabled(false);
+}
+
+HotelRoomListWidget::~HotelRoomListWidget() {
+    delete ui;
+}
+
+void HotelRoomListWidget::on_appendRoom_pushButton_clicked() {
+    appendRoomForm = new AppendHotelRoomDialog();
+    connect(appendRoomForm, &AppendHotelRoomDialog::roomCreated, this, &HotelRoomListWidget::updateRooms);
+    appendRoomForm->show();
+}
+
+void HotelRoomListWidget::updateRooms() {
+    this->rooms = DataBase::getRooms();
+    ui->tableWidget->setRowCount(0);
+    ui->tableWidget->clear();
 
     ui->tableWidget->setColumnCount(5);
     ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "Номер" << "Количество мест" << "Номер свободен" <<  "Стоимость" << " О номере");
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView(Qt::Orientation()).Stretch);
     ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView(Qt::Orientation()).ResizeToContents);
+    std::cout << "rooms size = " << rooms->getAll().size() << "\n";
     for (int i = 0; i < rooms->getAll().size(); ++i) {
         ui->tableWidget->insertRow(i);
         QTableWidgetItem *number = new QTableWidgetItem(rooms->getAll()[i]->getNumber());
@@ -34,6 +56,9 @@ HotelRoomListWidget::HotelRoomListWidget(QWidget *parent) :
     }
 }
 
-HotelRoomListWidget::~HotelRoomListWidget() {
-    delete ui;
+void HotelRoomListWidget::on_lineEdit_textChanged(const QString &arg1) {
+    std::cout << arg1.toStdString() << "\n";
+    bool enb = rooms->contains(arg1);
+    std::cout << enb << "\n";
+    ui->removeRoom_pushButton->setEnabled(enb);
 }

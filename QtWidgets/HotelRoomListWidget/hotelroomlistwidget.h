@@ -8,6 +8,7 @@
 #include <QWidget>
 #include "../../DataBases/HotelRoomDataBase.h"
 #include "../../DataBases/DataBase.h"
+#include "../AppendHotelRoomDialog/appendhotelroomdialog.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -21,10 +22,15 @@ public:
     explicit HotelRoomListWidget(QWidget *parent = nullptr);
 
     ~HotelRoomListWidget() override;
-
+private slots:
+    void on_appendRoom_pushButton_clicked();
+public slots:
+    void updateRooms();
+    void on_lineEdit_textChanged(const QString &arg1);
 private:
+    AppendHotelRoomDialog* appendRoomForm = nullptr;
+    HotelRoomDataBase* rooms = nullptr;
     Ui::HotelRoomListWidget *ui;
-    HotelRoomDataBase* rooms = DataBase().getRooms();
 };
 
 

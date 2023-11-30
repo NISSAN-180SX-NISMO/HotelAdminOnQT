@@ -7,14 +7,14 @@
 
 class DataBase {
 private:
-    ClientDataBase *clients = nullptr;
-    HotelRoomDataBase *rooms = nullptr;
+    static ClientDataBase *clients;
+    static HotelRoomDataBase *rooms;
 public:
-    ClientDataBase* getClients(){
+    static ClientDataBase* getClients(){
         if (!clients) clients = new ClientDataBase();
         return clients;
     }
-    HotelRoomDataBase* getRooms(){
+    static HotelRoomDataBase* getRooms(){
         if (!rooms) rooms = new HotelRoomDataBase();
         return rooms;
     }
