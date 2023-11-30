@@ -51,10 +51,12 @@ public:
         parser.saveToJSON("rooms.json");
     }
 
-    void remove(int ID) override {
+    void remove(QString number) override {
         for (int i = 0; i < rooms.size(); ++i)
-            if (rooms[i]->getID() == ID)
+            if (rooms[i]->getNumber() == number)
                 rooms.erase(rooms.begin() + i);
+        HotelRoomJSONParser parser(this->rooms);
+        parser.saveToJSON("rooms.json");
     }
 
 

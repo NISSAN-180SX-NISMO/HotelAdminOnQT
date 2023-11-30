@@ -24,6 +24,7 @@ public:
     ~HotelRoomListWidget() override;
 private slots:
     void on_appendRoom_pushButton_clicked();
+    void on_removeRoom_pushButton_clicked();
 public slots:
     void updateRooms();
     void on_lineEdit_textChanged(const QString &arg1);

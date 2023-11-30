@@ -37,7 +37,7 @@ void HotelRoomListWidget::updateRooms() {
     ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "Номер" << "Количество мест" << "Номер свободен" <<  "Стоимость" << " О номере");
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView(Qt::Orientation()).Stretch);
     ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView(Qt::Orientation()).ResizeToContents);
-    std::cout << "rooms size = " << rooms->getAll().size() << "\n";
+
     for (int i = 0; i < rooms->getAll().size(); ++i) {
         ui->tableWidget->insertRow(i);
         QTableWidgetItem *number = new QTableWidgetItem(rooms->getAll()[i]->getNumber());
@@ -57,8 +57,11 @@ void HotelRoomListWidget::updateRooms() {
 }
 
 void HotelRoomListWidget::on_lineEdit_textChanged(const QString &arg1) {
-    std::cout << arg1.toStdString() << "\n";
-    bool enb = rooms->contains(arg1);
-    std::cout << enb << "\n";
-    ui->removeRoom_pushButton->setEnabled(enb);
+    ui->removeRoom_pushButton->setEnabled(rooms->contains(arg1));
+}
+
+void HotelRoomListWidget::on_removeRoom_pushButton_clicked() {
+    rooms->remove(ui->lineEdit->text());
+    updateRooms();
+    emit on_lineEdit_textChanged(ui->lineEdit->text());
 }

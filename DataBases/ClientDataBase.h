@@ -41,7 +41,7 @@ public:
         this->bookings.push_back(booking);
     }
 
-    void remove(int ID) override {
+    void remove(QString name) override {
 
     }
 

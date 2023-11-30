@@ -9,7 +9,6 @@ QVector<HotelRoomInterface *> HotelRoomJSONParser::loadFromJSON(QString filename
     input_file.close();
 
     QVector<HotelRoomInterface *> rooms;
-    std::cout << "HotelRoomJSONParser::loadFromJSON\n";
     for (const auto& room_data : loaded_data) {
         HotelRoomInterface* room = HotelRoomInterface::roomFromJSON(room_data);
         if (room) {

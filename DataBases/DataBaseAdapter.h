@@ -11,7 +11,7 @@ protected:
     DataBaseAdapter() {}
 public:
     virtual void push(value) = 0;
-    virtual void remove(int ID) = 0;
+    virtual void remove(QString) = 0;
     virtual QVector<value> getAll() = 0;
     virtual bool contains(const QString& number) = 0;
 };
