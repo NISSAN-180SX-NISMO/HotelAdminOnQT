@@ -7,6 +7,7 @@
 
 #include <QWidget>
 #include "../../DataBases/DataBase.h"
+#include "../AppendClientDialog/appendclientdialog.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -20,9 +21,19 @@ public:
     explicit ClientsListWidget(QWidget *parent = nullptr);
 
     ~ClientsListWidget() override;
+    AppendClientDialog* getAppendClientDialog() const {
+        return appendClientDialog;
+    }
 
+
+public slots:
+    void updateClients();
+    void on_lineEdit_textChanged(const QString &arg1);
+    void on_removeBooking_pushButton_clicked();
+    void on_createBooking_pushButton_clicked();
 private:
     Ui::ClientsListWidget *ui;
+    AppendClientDialog* appendClientDialog = new AppendClientDialog(this);
     ClientDataBase* clients = DataBase::getClients();
 };
 

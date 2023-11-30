@@ -52,6 +52,9 @@ add_executable(Hotel main.cpp
         QtWidgets/AppendHotelRoomDialog/appendhotelroomdialog.h
         QtWidgets/AppendHotelRoomDialog/appendhotelroomdialog.ui
         DataBases/DataBase.cpp
+        QtWidgets/AppendClientDialog/appendclientdialog.cpp
+        QtWidgets/AppendClientDialog/appendclientdialog.h
+        QtWidgets/AppendClientDialog/appendclientdialog.ui
 )
 target_include_directories(Hotel PUBLIC include)
 target_link_libraries(Hotel

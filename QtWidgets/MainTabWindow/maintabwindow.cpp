@@ -16,14 +16,22 @@ MainTabWindow::MainTabWindow(QWidget *parent)
         : QDialog(parent)
 {
     tabWidget = new QTabWidget;
-    tabWidget->addTab(new HotelRoomListWidget(),tr("Список комнат"));
-    tabWidget->addTab(new ClientsListWidget(),"Список гостей");
+    HotelRoomListWidget* hotelRoomListWidget = new HotelRoomListWidget();
+    ClientsListWidget* clientsListWidget = new ClientsListWidget();
+    AppendClientDialog* appendClientDialog = clientsListWidget->getAppendClientDialog();
+    connect(appendClientDialog, &AppendClientDialog::clientCreated, hotelRoomListWidget, &HotelRoomListWidget::updateRooms);
+
+    tabWidget->addTab(hotelRoomListWidget,tr("Список комнат"));
+    tabWidget->addTab(clientsListWidget,"Список гостей");
 
     auto *mainLayout = new QVBoxLayout;
     mainLayout->addWidget(tabWidget);
     this->resize(1920, 1080);
     setLayout(mainLayout);
     setWindowTitle(tr("Tab Dialog"));
+
+    DataBase::getRooms();
+    DataBase::getClients();
 }
 
 MainTabWindow::~MainTabWindow() {

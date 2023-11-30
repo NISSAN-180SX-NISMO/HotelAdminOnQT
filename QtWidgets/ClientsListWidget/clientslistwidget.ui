@@ -13,54 +13,76 @@
   <property name="windowTitle">
    <string>ClientsListWidget</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>20</y>
-     <width>401</width>
-     <height>16</height>
+     <y>50</y>
+     <width>1800</width>
+     <height>921</height>
     </rect>
    </property>
-   <property name="text">
+   <property name="font">
+    <font>
+     <family>Courier New</family>
+    </font>
+   </property>
+   <property name="title">
     <string>Список гостей</string>
    </property>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>1780</width>
+      <height>891</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
-  <widget class="QPushButton" name="createBookingPushButton">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>1710</x>
-     <y>10</y>
-     <width>101</width>
-     <height>24</height>
+     <x>1400</x>
+     <y>20</y>
+     <width>401</width>
+     <height>27</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Добавить бронь</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="RemoveNookingPushButton">
-   <property name="geometry">
-    <rect>
-     <x>1600</x>
-     <y>10</y>
-     <width>101</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Удалить бронь</string>
-   </property>
-  </widget>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>1801</width>
-     <height>931</height>
-    </rect>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="QPushButton" name="createBooking_pushButton">
+      <property name="font">
+       <font>
+        <family>Courier New</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Добавить бронь</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="removeBooking_pushButton">
+        <property name="font">
+         <font>
+          <family>Courier New</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>Удалить</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

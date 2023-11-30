@@ -1,7 +1,9 @@
+#include <iostream>
 #include "BookingJSONParser.h"
 
 QVector<Booking *> BookingJSONParser::loadFromJSON(QString filename) {
     std::ifstream input_file(filename.toStdString());
+
     nlohmann::json loaded_data;
     input_file >> loaded_data;
     input_file.close();

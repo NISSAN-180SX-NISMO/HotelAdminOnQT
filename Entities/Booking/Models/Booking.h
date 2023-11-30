@@ -38,8 +38,8 @@ public:
     nlohmann::json toJSON() const {
         nlohmann::json data;
         data["room"] = getRoom()->toJSON();
-        data["bookingDate"] = getBookingDate().toString().toStdString();
-        data["endBookingDate"] = getEndBookingDate().toString().toStdString();
+        data["bookingDate"] = getBookingDate().toString("dd/MM/yyyy hh:mm").toStdString();
+        data["endBookingDate"] = getEndBookingDate().toString("dd/MM/yyyy hh:mm").toStdString();
         nlohmann::json clients_json;
         for (const auto& client : clients)
             clients_json.push_back(client->toJSON());

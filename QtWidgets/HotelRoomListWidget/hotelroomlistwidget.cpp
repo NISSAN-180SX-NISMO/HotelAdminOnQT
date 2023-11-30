@@ -14,7 +14,7 @@ HotelRoomListWidget::HotelRoomListWidget(QWidget *parent) :
     ui->setupUi(this);
 
     updateRooms();
-    ui->lineEdit->setPlaceholderText("Введите номер");
+    ui->lineEdit->setPlaceholderText("Введите номер комнаты");
     ui->removeRoom_pushButton->setEnabled(false);
 }
 
@@ -30,6 +30,9 @@ void HotelRoomListWidget::on_appendRoom_pushButton_clicked() {
 
 void HotelRoomListWidget::updateRooms() {
     this->rooms = DataBase::getRooms();
+    HotelRoomJSONParser parser(rooms->getAll());
+    parser.saveToJSON("rooms.json");
+
     ui->tableWidget->setRowCount(0);
     ui->tableWidget->clear();
 

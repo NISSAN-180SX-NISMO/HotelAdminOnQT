@@ -42,7 +42,9 @@ protected:
 //                getHotelRoom());
 //        HotelRoomJSONParser parser(this->rooms);
 //        parser.saveToJSON("rooms.json");
+        std::cout << "HotelRoomDataBase start\n";
         this->rooms = HotelRoomJSONParser::loadFromJSON("rooms.json");
+        std::cout << "HotelRoomDataBase end\n";
     };
 public:
     void push(HotelRoomInterface *room) override {
@@ -69,6 +71,20 @@ public:
             if (room->getNumber() == number)
                 return true;
         return false;
+    }
+
+    HotelRoomInterface* get(const QString &number) override {
+        std::string short_number = number.toStdString();
+        std::regex regex_pattern("\\d{3}");
+        std::sregex_iterator iter(short_number.begin(), short_number.end(), regex_pattern);
+        std::smatch match = *iter;
+        for(auto room : rooms) {
+            std::sregex_iterator iter2(room->getNumber().toStdString().begin(), room->getNumber().toStdString().end(), regex_pattern);
+            std::smatch match2 = *iter2;
+            if (room->getNumber() == number || match2.str() == match.str())
+                return room;
+        }
+        return nullptr;
     }
 };
 #endif //HOTEL_HOTELROOMDATABASE_H

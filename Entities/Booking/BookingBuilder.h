@@ -17,6 +17,7 @@ private:
     QDateTime endBookingDate;
 public:
     BookingBuilder* setRoom(HotelRoomInterface* room){
+        room->setAvailable(false);
         this->room = room;
         return this;
     }

@@ -14,5 +14,6 @@ public:
     virtual void remove(QString) = 0;
     virtual QVector<value> getAll() = 0;
     virtual bool contains(const QString& number) = 0;
+    virtual value get(const QString& number) = 0;
 };
 #endif //HOTEL_DATABASEADAPTER_H

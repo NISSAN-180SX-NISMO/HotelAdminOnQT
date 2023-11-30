@@ -10,51 +10,52 @@
 
 #include "../Entities/HotelRoom/HotelRoomBuilder.h"
 #include "../Entities/Booking/BookingJSONParser.h"
+#include "iostream"
 
 class ClientDataBase : public DataBaseAdapter<Booking*> {
 protected:
     QVector<Booking*> bookings;
     friend class DataBase;
     ClientDataBase():DataBaseAdapter<Booking*>(){
+        std::cout << "ClientDataBase start\n";
+        this->bookings = BookingJSONParser::loadFromJSON("bookings.json");
+        std::cout << "ClientDataBase end\n";
 
-//        this->push((new BookingBuilder())->
-//                setRoom(HotelRoomBuilder().
-//                        setNumber("111")->
-//                        setSeats(2)->
-//                        appendEquipment(new Equipments::TV)->
-//                        appendEquipment(new Equipments::Bed)->
-//                        getHotelRoom())->
-//                appendClient(new Client("Семен"))->
-//                appendClient(new Client("Антон"))->
-//                setBookingDate(QDateTime(QDate(2021, 1, 12), QTime(14, 30)))->
-//                setEndBookingDate(QDateTime(QDate(2021, 3, 12), QTime(14, 30)))
-//        ->getBooking());
-
-//        BookingJSONParser parser(bookings);
-//        parser.saveToJSON("bookings.json");
-
-this->bookings = BookingJSONParser::loadFromJSON("bookings.json");
     }
 
 public:
     void push(Booking* booking) override {
         this->bookings.push_back(booking);
+        BookingJSONParser parser(bookings);
+        parser.saveToJSON("bookings.json");
     }
 
-    void remove(QString name) override {
-
+    void remove(QString number) override {
+        for (int i = 0; i < bookings.size(); ++i)
+            if (bookings[i]->getRoom()->getNumber() == number)
+                bookings.remove(i);
+        BookingJSONParser parser(bookings);
+        parser.saveToJSON("bookings.json");
     }
 
     QVector<Booking*> getAll() override {
         return this->bookings;
     }
 
-    bool contains(const QString &name) override {
+    bool contains(const QString &number) override {
         for(auto booking : bookings)
-            for (auto client : booking->getClients())
-                if (client->getName() == name)
-                    return true;
+            if (booking->getRoom()->getNumber() == number) {
+                std::cout << number.toStdString() << " = " << booking->getRoom()->getNumber().toStdString() << "\n";
+                return true;
+            }
         return false;
+    }
+
+    Booking *get(const QString &number) override {
+        for(auto booking : bookings)
+            if (booking->getRoom()->getNumber() == number)
+                return booking;
+        return nullptr;
     }
 };
 
