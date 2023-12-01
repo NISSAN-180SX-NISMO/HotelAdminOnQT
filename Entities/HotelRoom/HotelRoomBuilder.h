@@ -2,7 +2,7 @@
 #ifndef HOTEL_HOTELROOMBUILDER_H
 #define HOTEL_HOTELROOMBUILDER_H
 
-#include "Models/HotelRoomInterface.h"
+#include "Models/HotelRoom.h"
 #include "Models/RegularHotelRoom.h"
 #include "Models/BusinessClassHotelRoom.h"
 #include "Models/LuxuryHotelRoom.h"
@@ -34,7 +34,7 @@ public:
         return this;
     }
 
-    HotelRoomInterface* getHotelRoom(){
+    HotelRoom* getHotelRoom(){
         int equipmentsCost = [](QVector<Equipment*> equipments){
             int sum = 0;
             for (auto equipment : equipments)

@@ -3,7 +3,7 @@
 #define HOTEL_BOOKINGBUILDER_H
 
 #include "Models/Client.h"
-#include "../HotelRoom/Models/HotelRoomInterface.h"
+#include "../HotelRoom/Models/HotelRoom.h"
 #include "QVector"
 #include "QDateTime"
 #include "Models/Booking.h"
@@ -12,11 +12,11 @@
 class BookingBuilder {
 private:
     QVector<Client*> clients;
-    HotelRoomInterface* room;
+    HotelRoom* room;
     QDateTime bookingDate;
     QDateTime endBookingDate;
 public:
-    BookingBuilder* setRoom(HotelRoomInterface* room){
+    BookingBuilder* setRoom(HotelRoom* room){
         room->setAvailable(false);
         this->room = room;
         return this;

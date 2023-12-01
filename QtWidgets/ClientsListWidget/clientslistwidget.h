@@ -24,7 +24,8 @@ public:
     AppendClientDialog* getAppendClientDialog() const {
         return appendClientDialog;
     }
-
+signals:
+void clientRemoved();
 
 public slots:
     void updateClients();

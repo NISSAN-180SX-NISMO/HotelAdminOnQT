@@ -3,17 +3,17 @@
 #define HOTEL_HOTELROOMJSONPARSER_H
 
 #include <QVector>
-#include "Models/HotelRoomInterface.h"
+#include "Models/HotelRoom.h"
 #include "HotelRoomBuilder.h"
 #include "json.hpp"
 #include "fstream"
 
 class HotelRoomJSONParser {
 private:
-    QVector<HotelRoomInterface*> rooms;
+    QVector<HotelRoom*> rooms;
 
 public:
-    HotelRoomJSONParser(QVector<HotelRoomInterface*> rooms) {
+    HotelRoomJSONParser(QVector<HotelRoom*> rooms) {
         this->rooms = rooms;
     }
     void saveToJSON(QString filename){
@@ -26,7 +26,7 @@ public:
         file << json_data.dump(2);
         file.close();
     }
-    static QVector<HotelRoomInterface*> loadFromJSON(QString filename);
+    static QVector<HotelRoom*> loadFromJSON(QString filename);
 };
 
 

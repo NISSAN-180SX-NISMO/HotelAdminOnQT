@@ -1,8 +1,3 @@
-//
-// Created by user on 28.11.2023.
-//
-
-// You may need to build the project (run Qt uic code generator) to get "ui_MainTabWindow.h" resolved
 
 #include <QVBoxLayout>
 #include "maintabwindow.h"
@@ -20,9 +15,10 @@ MainTabWindow::MainTabWindow(QWidget *parent)
     ClientsListWidget* clientsListWidget = new ClientsListWidget();
     AppendClientDialog* appendClientDialog = clientsListWidget->getAppendClientDialog();
     connect(appendClientDialog, &AppendClientDialog::clientCreated, hotelRoomListWidget, &HotelRoomListWidget::updateRooms);
+    connect(clientsListWidget, &ClientsListWidget::clientRemoved, hotelRoomListWidget, &HotelRoomListWidget::updateRooms);
 
     tabWidget->addTab(hotelRoomListWidget,tr("Список комнат"));
-    tabWidget->addTab(clientsListWidget,"Список гостей");
+    tabWidget->addTab(clientsListWidget,tr("Список гостей"));
 
     auto *mainLayout = new QVBoxLayout;
     mainLayout->addWidget(tabWidget);

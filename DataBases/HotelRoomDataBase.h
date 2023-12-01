@@ -4,50 +4,21 @@
 
 #include <fstream>
 #include <iostream>
-#include "../Entities/HotelRoom/Models/HotelRoomInterface.h"
+#include "../Entities/HotelRoom/Models/HotelRoom.h"
 #include "../Entities/HotelRoom/HotelRoomBuilder.h"
 #include "DataBaseAdapter.h"
 #include "QVector"
 #include "../Entities/HotelRoom/HotelRoomJSONParser.h"
 
-class HotelRoomDataBase : public DataBaseAdapter<HotelRoomInterface*>{
+class HotelRoomDataBase : public DataBaseAdapter<HotelRoom*>{
 protected:
-    QVector<HotelRoomInterface*> rooms;
+    QVector<HotelRoom*> rooms;
     friend class DataBase;
-    HotelRoomDataBase():DataBaseAdapter<HotelRoomInterface *>(){
-//        this->push(HotelRoomBuilder().
-//                setNumber("111")->
-//                setSeats(2)->
-//                appendEquipment(new Equipments::TV)->
-//                appendEquipment(new Equipments::Bed)->
-//                getHotelRoom());
-//
-//        this->push(HotelRoomBuilder().
-//                setNumber("222")->
-//                setSeats(2)->
-//                appendEquipment(new Equipments::TV)->
-//                appendEquipment(new Equipments::Bed)->
-//                appendEquipment(new Equipments::WIFI)->
-//                appendEquipment(new Equipments::Table)->
-//                getHotelRoom());
-//
-//        this->push(HotelRoomBuilder().
-//                setNumber("333")->
-//                setSeats(2)->
-//                appendEquipment(new Equipments::TV)->
-//                appendEquipment(new Equipments::Bed)->
-//                appendEquipment(new Equipments::WIFI)->
-//                appendEquipment(new Equipments::Table)->
-//                appendEquipment(new Equipments::DressingRoom)->
-//                getHotelRoom());
-//        HotelRoomJSONParser parser(this->rooms);
-//        parser.saveToJSON("rooms.json");
-        std::cout << "HotelRoomDataBase start\n";
+    HotelRoomDataBase():DataBaseAdapter<HotelRoom *>(){
         this->rooms = HotelRoomJSONParser::loadFromJSON("rooms.json");
-        std::cout << "HotelRoomDataBase end\n";
     };
 public:
-    void push(HotelRoomInterface *room) override {
+    void push(HotelRoom *room) override {
         rooms.push_back(room);
         HotelRoomJSONParser parser(this->rooms);
         parser.saveToJSON("rooms.json");
@@ -62,7 +33,7 @@ public:
     }
 
 
-    QVector<HotelRoomInterface *> getAll() override {
+    QVector<HotelRoom *> getAll() override {
         return rooms;
     }
 
@@ -73,7 +44,7 @@ public:
         return false;
     }
 
-    HotelRoomInterface* get(const QString &number) override {
+    HotelRoom* get(const QString &number) override {
         std::string short_number = number.toStdString();
         std::regex regex_pattern("\\d{3}");
         std::sregex_iterator iter(short_number.begin(), short_number.end(), regex_pattern);

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef HOTEL_HOTELROOMINTERFACE_H
-#define HOTEL_HOTELROOMINTERFACE_H
+#ifndef HOTEL_HOTELROOM_H
+#define HOTEL_HOTELROOM_H
 
 
 #include <QString>
@@ -16,7 +16,7 @@
 #define LUXURY_COEF 2.5
 #define LUXURY_COST 20000
 
-class HotelRoomInterface {
+class HotelRoom {
 private:
     static int ID;
     QString number;
@@ -25,7 +25,7 @@ private:
 protected:
     QVector<Equipment*> equipments;
 public:
-    HotelRoomInterface(const QString &number, int seats, bool available, QVector<Equipment*> equipments)
+    HotelRoom(const QString &number, int seats, bool available, QVector<Equipment*> equipments)
     :
     number(number + "-" + QString::number(ID)),
     seats(seats), available(available),
@@ -36,19 +36,19 @@ public:
         return number;
     }
     void setNumber(const QString &number) {
-        HotelRoomInterface::number = number;
+        HotelRoom::number = number;
     }
     int getSeats() const {
         return seats;
     }
     void setSeats(int seats) {
-        HotelRoomInterface::seats = seats;
+        HotelRoom::seats = seats;
     }
     bool isAvailable() const {
         return available;
     }
     void setAvailable(bool available) {
-        HotelRoomInterface::available = available;
+        HotelRoom::available = available;
     }
     int getID(){
         return this->ID;
@@ -71,13 +71,13 @@ public:
         data["equipments"] = eq_json;
         return data;
     }
-    static HotelRoomInterface* roomFromJSON(nlohmann::json room_data);
+    static HotelRoom* roomFromJSON(nlohmann::json room_data);
 
-    virtual HotelRoomInterface* copy() = 0;
+    virtual HotelRoom* copy() = 0;
     virtual float getCost() = 0;
     virtual QString getEquipments() = 0;
 };
 
 
 
-#endif //HOTEL_HOTELROOMINTERFACE_H
+#endif //HOTEL_HOTELROOM_H

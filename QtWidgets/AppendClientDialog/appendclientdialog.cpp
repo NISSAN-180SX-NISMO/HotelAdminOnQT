@@ -29,7 +29,7 @@ AppendClientDialog::~AppendClientDialog() {
 }
 
 void AppendClientDialog::updateForm() {
-    HotelRoomInterface* currentRoom = rooms->get(ui->comboBox->currentText());
+    HotelRoom* currentRoom = rooms->get(ui->comboBox->currentText());
     if (currentClients.size() > currentRoom->getSeats())
         while (currentClients.size() > currentRoom->getSeats())
             currentClients.pop_back();
@@ -40,8 +40,6 @@ void AppendClientDialog::updateForm() {
         ui->listWidget->addItem(client->getName());
 
     ui->save_pushButton->setEnabled(formIsValid());
-    //std::cout << "booking date: " << ui->bookingDate_calendarWidget->selectedDate().toString().toStdString() << "\n";
-    //std::cout << "end booking date: " << ui->endBookingDate_calendarWidget->selectedDate().toString().toStdString() << "\n";
 }
 
 void AppendClientDialog::on_appendClient_pushButton_clicked() {
@@ -70,10 +68,6 @@ void AppendClientDialog::on_save_pushButton_clicked() {
 }
 
 void AppendClientDialog::loadRooms() {
-
-    for(int i = 0; i < ui->comboBox->count(); ++i)
-        std::cout << "[" << i << "] = " << ui->comboBox->itemText(i).toStdString() << "\n";
-
     for (auto room : rooms->getAll())
         if (room->isAvailable())
             ui->comboBox->addItem(room->getNumber());

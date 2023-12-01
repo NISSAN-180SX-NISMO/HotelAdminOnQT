@@ -2,12 +2,12 @@
 // Created by user on 28.11.2023.
 //
 
-#include "HotelRoomInterface.h"
+#include "HotelRoom.h"
 #include "../HotelRoomBuilder.h"
 
-int HotelRoomInterface::ID = 0;
+int HotelRoom::ID = 0;
 
-HotelRoomInterface *HotelRoomInterface::roomFromJSON(nlohmann::json room_data) {
+HotelRoom *HotelRoom::roomFromJSON(nlohmann::json room_data) {
 
     HotelRoomBuilder* builder =
             (new HotelRoomBuilder())->

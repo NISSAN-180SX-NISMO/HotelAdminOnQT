@@ -3,14 +3,14 @@
 #define HOTEL_LUXURYHOTELROOM_H
 
 #include <QVector>
-#include "HotelRoomInterface.h"
+#include "HotelRoom.h"
 
-class LuxuryHotelRoom : public HotelRoomInterface {
+class LuxuryHotelRoom : public HotelRoom {
 public:
     LuxuryHotelRoom(const QString &number, int seats, bool available, const QVector<Equipment*> &equipments)
-            : HotelRoomInterface(number, seats, available, equipments) {}
+            : HotelRoom(number, seats, available, equipments) {}
 
-    HotelRoomInterface *copy() override {
+    HotelRoom *copy() override {
         return new LuxuryHotelRoom(this->getNumber(), this->getSeats(), this->isAvailable(), this->equipments);
     }
 

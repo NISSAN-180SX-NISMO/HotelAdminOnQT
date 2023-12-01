@@ -17,8 +17,8 @@ find_package(Qt6 COMPONENTS
         REQUIRED)
 
 add_executable(Hotel main.cpp
-        Entities/HotelRoom/Models/HotelRoomInterface.cpp
-        Entities/HotelRoom/Models/HotelRoomInterface.h
+        Entities/HotelRoom/Models/HotelRoom.cpp
+        Entities/HotelRoom/Models/HotelRoom.h
         Entities/Equipment/Equipment.cpp
         Entities/Equipment/Equipment.h
         Entities/HotelRoom/Models/RegularHotelRoom.h

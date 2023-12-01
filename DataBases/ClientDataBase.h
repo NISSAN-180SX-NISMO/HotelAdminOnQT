@@ -17,10 +17,7 @@ protected:
     QVector<Booking*> bookings;
     friend class DataBase;
     ClientDataBase():DataBaseAdapter<Booking*>(){
-        std::cout << "ClientDataBase start\n";
         this->bookings = BookingJSONParser::loadFromJSON("bookings.json");
-        std::cout << "ClientDataBase end\n";
-
     }
 
 public:
@@ -45,7 +42,6 @@ public:
     bool contains(const QString &number) override {
         for(auto booking : bookings)
             if (booking->getRoom()->getNumber() == number) {
-                std::cout << number.toStdString() << " = " << booking->getRoom()->getNumber().toStdString() << "\n";
                 return true;
             }
         return false;

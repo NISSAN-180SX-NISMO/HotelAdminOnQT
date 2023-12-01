@@ -6,16 +6,16 @@
 #include <QDateTime>
 #include "Client.h"
 #include "json.hpp"
-#include "../../HotelRoom/Models/HotelRoomInterface.h"
+#include "../../HotelRoom/Models/HotelRoom.h"
 #include "QVector"
 
 class Booking {
 private:
     friend class BookingBuilder;
-    Booking(const QVector<Client *> &clients, HotelRoomInterface *room, QDateTime bookingDate, QDateTime endBookingDate) :
+    Booking(const QVector<Client *> &clients, HotelRoom *room, QDateTime bookingDate, QDateTime endBookingDate) :
     clients(clients), room(room), bookingDate(bookingDate), endBookingDate(endBookingDate) {}
     QVector<Client*> clients;
-    HotelRoomInterface* room;
+    HotelRoom* room;
     QDateTime bookingDate;
     QDateTime endBookingDate;
 public:
@@ -23,7 +23,7 @@ public:
         return clients;
     }
 
-    HotelRoomInterface *getRoom() const {
+    HotelRoom *getRoom() const {
         return room;
     }
 
