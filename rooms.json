@@ -1,0 +1,56 @@
+[
+  {
+    "available": false,
+    "equipments": [
+      {
+        "type": "TV"
+      },
+      {
+        "type": "Bed"
+      }
+    ],
+    "number": "111",
+    "seats": 2
+  },
+  {
+    "available": true,
+    "equipments": [
+      {
+        "type": "TV"
+      },
+      {
+        "type": "Bed"
+      },
+      {
+        "type": "WIFI"
+      },
+      {
+        "type": "Table"
+      }
+    ],
+    "number": "222",
+    "seats": 2
+  },
+  {
+    "available": true,
+    "equipments": [
+      {
+        "type": "TV"
+      },
+      {
+        "type": "Bed"
+      },
+      {
+        "type": "WIFI"
+      },
+      {
+        "type": "Table"
+      },
+      {
+        "type": "DressingRoom"
+      }
+    ],
+    "number": "333",
+    "seats": 2
+  }
+]

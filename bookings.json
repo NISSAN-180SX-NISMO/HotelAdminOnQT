@@ -1,0 +1,27 @@
+[
+  {
+    "bookingDate": "01/12/2023 02:20",
+    "clients": [
+      {
+        "name": "Пупкин Иван Иванович"
+      },
+      {
+        "name": "Пупкин Инга Инговна"
+      }
+    ],
+    "endBookingDate": "02/12/2023 02:20",
+    "room": {
+      "available": false,
+      "equipments": [
+        {
+          "type": "TV"
+        },
+        {
+          "type": "Bed"
+        }
+      ],
+      "number": "111",
+      "seats": 2
+    }
+  }
+]
