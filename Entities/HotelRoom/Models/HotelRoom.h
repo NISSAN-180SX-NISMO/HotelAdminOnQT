@@ -57,7 +57,7 @@ public:
     nlohmann::json toJSON() const {
         nlohmann::json data;
         std::string number = getNumber().toStdString();
-        std::regex regex_pattern("\\d{3}");
+        std::regex regex_pattern("[RBL]\\d{3}");
         std::sregex_iterator iter(number.begin(), number.end(), regex_pattern);
         std::smatch match = *iter;
 

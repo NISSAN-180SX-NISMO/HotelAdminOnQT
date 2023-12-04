@@ -2,9 +2,10 @@
 #include "appendhotelroomdialog.h"
 #include "ui_AppendHotelRoomDialog.h"
 #include "QRegularExpressionValidator"
-#include "../../Entities/HotelRoom/HotelRoomBuilder.h"
+#include "../../Entities/HotelRoom/Builder/HotelRoomBuilder.h"
 #include "../../DataBases/HotelRoomDataBase.h"
 #include "../../DataBases/DataBase.h"
+#include "../../Entities/HotelRoom/Builder/HotelRoomDirector.h"
 
 
 AppendHotelRoomDialog::AppendHotelRoomDialog(QWidget *parent) :
@@ -12,7 +13,7 @@ AppendHotelRoomDialog::AppendHotelRoomDialog(QWidget *parent) :
     ui->setupUi(this);
 
     // Устанавливает формат ввод для номера комнаты - 3-хзначное число
-    QRegularExpressionValidator *RoomNumberValidator = new QRegularExpressionValidator(QRegularExpression("[0-9]{3}"), this);
+    QRegularExpressionValidator *RoomNumberValidator = new QRegularExpressionValidator(QRegularExpression("[RBL][0-9]{3}"), this);
     ui->number_lineEdit->setValidator(RoomNumberValidator);
 
     // Установка допустимых значений для количества мест
@@ -85,13 +86,13 @@ void AppendHotelRoomDialog::updateForm() {
 }
 
 bool AppendHotelRoomDialog::formIsValid() {
-   if (ui->number_lineEdit->text().size() != 3) return false;
+   if (ui->number_lineEdit->text().size() != 4) return false;
    return true;
 }
 
 void AppendHotelRoomDialog::on_createRoom_pushButton_clicked() {
-    HotelRoomBuilder* builder = (new HotelRoomBuilder)->
-            setNumber(ui->number_lineEdit->text())->
+    HotelRoomDirector director = HotelRoomDirector(ui->number_lineEdit->text());
+    HotelRoomBuilder* builder = director.getBuilder()->
             setSeats(ui->seatsCount_spinBox->value());
     for (auto equipment : currentEquipments)
         builder->appendEquipment(equipment);

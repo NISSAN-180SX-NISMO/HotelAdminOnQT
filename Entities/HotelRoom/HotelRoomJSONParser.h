@@ -4,7 +4,7 @@
 
 #include <QVector>
 #include "Models/HotelRoom.h"
-#include "HotelRoomBuilder.h"
+#include "Builder/HotelRoomBuilder.h"
 #include "json.hpp"
 #include "fstream"
 

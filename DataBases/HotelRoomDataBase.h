@@ -5,16 +5,16 @@
 #include <fstream>
 #include <iostream>
 #include "../Entities/HotelRoom/Models/HotelRoom.h"
-#include "../Entities/HotelRoom/HotelRoomBuilder.h"
-#include "DataBaseAdapter.h"
+#include "../Entities/HotelRoom/Builder/HotelRoomBuilder.h"
+#include "DataBaseRepository.h"
 #include "QVector"
 #include "../Entities/HotelRoom/HotelRoomJSONParser.h"
 
-class HotelRoomDataBase : public DataBaseAdapter<HotelRoom*>{
+class HotelRoomDataBase : public DataBaseRepository<HotelRoom*>{
 protected:
     QVector<HotelRoom*> rooms;
     friend class DataBase;
-    HotelRoomDataBase():DataBaseAdapter<HotelRoom *>(){
+    HotelRoomDataBase(): DataBaseRepository<HotelRoom *>(){
         this->rooms = HotelRoomJSONParser::loadFromJSON("rooms.json");
     };
 public:

@@ -24,11 +24,11 @@ add_executable(Hotel main.cpp
         Entities/HotelRoom/Models/RegularHotelRoom.h
         Entities/HotelRoom/Models/BusinessClassHotelRoom.h
         Entities/HotelRoom/Models/LuxuryHotelRoom.h
-        Entities/HotelRoom/HotelRoomBuilder.h
+        Entities/HotelRoom/Builder/HotelRoomBuilder.h
         Entities/Booking/Models/Client.cpp
         Entities/Booking/Models/Client.h
         Entities/Booking/Models/Booking.h
-        DataBases/DataBaseAdapter.h
+        DataBases/DataBaseRepository.h
         DataBases/ClientDataBase.h
         DataBases/HotelRoomDataBase.h
         Entities/Booking/BookingBuilder.h
@@ -55,6 +55,10 @@ add_executable(Hotel main.cpp
         QtWidgets/AppendClientDialog/appendclientdialog.cpp
         QtWidgets/AppendClientDialog/appendclientdialog.h
         QtWidgets/AppendClientDialog/appendclientdialog.ui
+        Entities/HotelRoom/Builder/HotelRoomDirector.h
+        Entities/HotelRoom/Builder/RegularHotelRoomBuilder.h
+        Entities/HotelRoom/Builder/BusinessClassHotelRoomBuilder.h
+        Entities/HotelRoom/Builder/LuxuryHotelRoomBuilder.h
 )
 target_include_directories(Hotel PUBLIC include)
 target_link_libraries(Hotel

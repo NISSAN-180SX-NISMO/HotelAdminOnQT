@@ -4,19 +4,19 @@
 
 #include "../Entities/Booking/Models/Booking.h"
 #include "QVector"
-#include "DataBaseAdapter.h"
+#include "DataBaseRepository.h"
 #include "../Entities/Booking/BookingBuilder.h"
 
 
-#include "../Entities/HotelRoom/HotelRoomBuilder.h"
+#include "../Entities/HotelRoom/Builder/HotelRoomBuilder.h"
 #include "../Entities/Booking/BookingJSONParser.h"
 #include "iostream"
 
-class ClientDataBase : public DataBaseAdapter<Booking*> {
+class ClientDataBase : public DataBaseRepository<Booking*> {
 protected:
     QVector<Booking*> bookings;
     friend class DataBase;
-    ClientDataBase():DataBaseAdapter<Booking*>(){
+    ClientDataBase(): DataBaseRepository<Booking*>(){
         this->bookings = BookingJSONParser::loadFromJSON("bookings.json");
     }
 
